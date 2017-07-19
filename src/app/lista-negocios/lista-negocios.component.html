@@ -1,0 +1,31 @@
+<div class=" col-sm-auto col-md-10 offset-md-1">
+	<table class="table table-striped">
+		<thead class="thead-inverse">
+			<tr>
+				<th class="hidden-sm-down">Codigo</th>
+				<th class="hidden-sm-down">Categoria</th>
+				<th>Nome</th>
+				<th class="hidden-sm-down">Quantidade</th>
+				<th>Total</th>
+				<th>Negocio</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngIf="showMsg()">
+				<th colspan="6" class="text-center hidden-sm-down"><p>Atualmente sem resgistros</p></th>
+				<th colspan="4" class="text-center hidden-md-up"><p>Atualmente sem resgistros</p></th>
+			</tr>
+			<tr *ngFor="let item of negociados">
+				<th class="hidden-sm-down">{{ item.codigo }}</th>
+				<td class="hidden-sm-down">{{ item.tipoMercadoria }}</td>
+				<td>{{ item.nome }}</td>
+				<td class="hidden-sm-down">{{ item.quantidade }}</td>
+				<td>{{ item.preco | currency:'BRL':true }}</td>
+				<td [style.color]= "item.tipoNegocio === 'Comprar' ? 'green' : 'blue'">
+				{{ item.tipoNegocio === 'Comprar' ? 'Comprado' : 'Vendido' }}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<br>
